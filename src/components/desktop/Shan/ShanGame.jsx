@@ -57,54 +57,46 @@ export default function ShanGame({ operator_code = "a3h1" }) {
   };
 
   return (
-    <div className="d-flex flex-column align-items-center justify-content-center" style={{ minHeight: 400 }}>
-      <Card style={{ maxWidth: 400, width: '100%', position: 'relative' }} className="shadow p-4">
-        {/* Spinner overlay during launch */}
-        {loading && (
-          <div style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            background: 'rgba(255,255,255,0.7)',
-            zIndex: 10,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            borderRadius: 12
-          }}>
-            <Spinner animation="border" style={{ width: 60, height: 60 }} />
+    <div className="flex flex-col items-center justify-center min-h-[400px] py-8">
+      <div className="relative w-full max-w-md mx-auto bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 rounded-3xl shadow-2xl">
+        <div className="w-full h-full rounded-3xl bg-[#181A29] p-6">
+          {/* Spinner overlay during launch */}
+          {loading && (
+            <div className="absolute inset-0 bg-white/70 z-20 flex items-center justify-center rounded-3xl">
+              <div className="w-16 h-16 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin" />
+            </div>
+          )}
+          <div className="flex flex-col items-center mb-4">
+            <img src={shanImg} alt="Shan Game" className="w-full max-w-[220px] rounded-2xl object-cover shadow-lg mb-2" />
+            <h2 className="text-2xl font-extrabold text-yellow-400 mb-2 tracking-wide drop-shadow text-center">Shan Game</h2>
           </div>
-        )}
-        <Card.Body>
-          <div className="text-center mb-3">
-            <img src={shanImg} alt="Shan Game" style={{ width: '100%', maxWidth: 220, borderRadius: 12, objectFit: 'cover', boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} />
-          </div>
-          <h2 className="text-center mb-4">Shan Game</h2>
           {fetchingUser ? (
-            <div className="text-center my-4">
-              <Spinner animation="border" />
-              <div>Loading user info...</div>
+            <div className="flex flex-col items-center my-4">
+              <div className="w-8 h-8 border-4 border-yellow-400 border-t-transparent rounded-full animate-spin mb-2" />
+              <div className="text-gray-300">Loading user info...</div>
             </div>
           ) : user ? (
             <>
-              <div className="mb-3 text-center">
-                <div><strong>Account:</strong> {user.member_account || user.user_name}</div>
-                <div><strong>Balance:</strong> {user.balance ? parseFloat(user.balance).toLocaleString(undefined, { minimumFractionDigits: 2 }) : '0.00'}</div>
-                <div><strong>Product Code:</strong> {operator_code}</div>
+              <div className="mb-4 grid grid-cols-1 gap-2 text-center text-sm text-gray-200">
+                <div><span className="font-semibold text-yellow-300">Account:</span> <span className="font-mono">{user.member_account || user.user_name}</span></div>
+                <div><span className="font-semibold text-yellow-300">Balance:</span> <span className="font-mono">{user.balance ? parseFloat(user.balance).toLocaleString(undefined, { minimumFractionDigits: 2 }) : '0.00'}</span></div>
+                <div><span className="font-semibold text-yellow-300">Product Code:</span> <span className="font-mono">{operator_code}</span></div>
               </div>
-              {error && <Alert variant="danger">{error}</Alert>}
-              {success && <Alert variant="success">{success}</Alert>}
-              <Button onClick={handleLaunchGame} disabled={loading} size="lg" className="w-100 mb-2">
-                {loading ? <Spinner as="span" animation="border" size="sm" /> : 'Launch Shan Game'}
-              </Button>
+              {error && <div className="mb-2 px-3 py-2 bg-red-100 text-red-700 rounded-lg text-center text-sm font-semibold shadow">{error}</div>}
+              {success && <div className="mb-2 px-3 py-2 bg-green-100 text-green-700 rounded-lg text-center text-sm font-semibold shadow">{success}</div>}
+              <button
+                onClick={handleLaunchGame}
+                disabled={loading}
+                className="w-full mb-2 px-4 py-3 rounded-full bg-gradient-to-r from-orange-400 to-yellow-500 text-white font-bold text-lg shadow hover:scale-105 transition focus:outline-none focus:ring-2 focus:ring-yellow-400 disabled:opacity-60 disabled:cursor-not-allowed"
+              >
+                {loading ? <span className="inline-block w-5 h-5 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin align-middle" /> : 'Launch Shan Game'}
+              </button>
             </>
           ) : (
-            <Alert variant="danger">Failed to load user info. Please log in again.</Alert>
+            <div className="mb-2 px-3 py-2 bg-red-100 text-red-700 rounded-lg text-center text-sm font-semibold shadow">Failed to load user info. Please log in again.</div>
           )}
-        </Card.Body>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }

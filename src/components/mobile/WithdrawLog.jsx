@@ -10,38 +10,32 @@ export default function WithdrawLog() {
 
   return (
     <>
-      <div className="container my-4 mb-5 pb-5">
-        {loading && <Spinner />}
+      <div className="max-w-2xl mx-auto my-4 mb-5 pb-5 px-2">
+        <h2 className="text-xl font-bold text-yellow-400 mb-4 text-center">Withdraw Log</h2>
+        {loading && <div className="text-center py-8 text-gray-400 font-semibold">Loading...</div>}
         {logs && logs.length === 0 && (
-          <div className="text-center">
+          <div className="text-center py-8 text-gray-400 font-semibold">
             <h5>{content?.no_data}</h5>
           </div>
         )}
-        <div className="row">
+        <div className="space-y-4">
           {logs && logs.map((log, index) => (
-            <div className="col-md-6 mb-4" key={index}>
-              <div className="border p-3 rounded-4">
-                <div className="d-flex justify-content-between align-items-center mb-2">
-                  <div>
-                    <span className={`badge text-bg-${log.status == "Pending" ? "warning" : log.status == "Success" ? "success" : "danger"}`}>{log.status}</span>
-                  </div>
-                </div>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <h6>{content?.log?.date}</h6>
-                  <span>{log.datetime}</span>
-                </div>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <h6>{content?.wallet?.account_name}</h6>
-                  <span>{log.account_name}</span>
-                </div>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <h6>{content?.wallet?.account}</h6>
-                  <span>{log.account_number}</span>
-                </div>
-                <div className='d-flex justify-content-between align-items-center'>
-                  <h6>{content?.log?.amount}</h6>
-                  <span>{Number(log.amount).toLocaleString()} Ks</span>
-                </div>
+            <div className="rounded-xl border border-gray-700 bg-white/10 shadow p-4 hover:shadow-lg transition flex flex-col gap-2" key={index}>
+              <div className="flex items-center gap-2 mb-2">
+                <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1
+                  ${log.status === 'Pending' ? 'bg-yellow-200 text-yellow-800' : log.status === 'Success' ? 'bg-green-200 text-green-800' : 'bg-red-200 text-red-800'}`}
+                >
+                  {log.status === 'Pending' && <svg className="w-3 h-3 mr-1 inline-block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg>}
+                  {log.status === 'Success' && <svg className="w-3 h-3 mr-1 inline-block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M5 13l4 4L19 7" /></svg>}
+                  {log.status === 'Failed' && <svg className="w-3 h-3 mr-1 inline-block" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" /></svg>}
+                  {log.status}
+                </span>
+              </div>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1 text-xs md:text-sm">
+                <div><span className="font-semibold text-gray-400">{content?.log?.date}:</span> <span>{log.datetime}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.wallet?.account_name}:</span> <span>{log.account_name}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.wallet?.account}:</span> <span>{log.account_number}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.log?.amount}:</span> <span>{Number(log.amount).toLocaleString()} Ks</span></div>
               </div>
             </div>
           ))}

@@ -62,16 +62,18 @@ export default function ProviderList({ typeCode, type }) {
                 updateProvider(item.id);
               }}
             >
-              <div className="relative w-full aspect-square overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-200 shadow-lg">
-                <img
-                  src={"https://luckymillion.pro/api/.." + item.img_url}
-                  alt={item.product_name}
-                  className="w-full h-full object-cover rounded-2xl"
-                />
+              <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 group-hover:from-yellow-400 group-hover:to-orange-400 group-hover:shadow-2xl transition-all duration-200">
+                <div className="w-full h-full bg-black/60 rounded-2xl flex items-center justify-center group-hover:bg-black/80 transition-all duration-200">
+                  <img
+                    src={"https://luckymillion.pro/api/.." + item.img_url}
+                    alt={item.product_name}
+                    className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-200"
+                  />
+                </div>
               </div>
               <div className="mt-2 flex justify-center w-full">
-                <span className="px-4 py-1 bg-black/90 text-white font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap">
-                  {item.product_name}
+                <span className="px-4 py-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-600 text-black font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
+                  {item.product_title}
                 </span>
               </div>
             </div>

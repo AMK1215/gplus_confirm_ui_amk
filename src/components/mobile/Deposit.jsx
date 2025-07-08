@@ -49,35 +49,34 @@ const Deposit = () => {
   return (
     <div>
       <form 
-      className="profileForm px-3 py-4 rounded-4" 
+      className="bg-white/10 backdrop-blur-sm px-3 py-4 rounded-2xl border border-white/20 w-full max-w-md mx-auto" 
       onSubmit={deposit}
       >
         <div className="d-flex justify-content-between">
-          <h5 className="fw-bold mb-3">{content?.wallet?.deposit}</h5>
-          <div className="text-end">
-            <Button className='mx-auto mb-4' onClick={() => setShow(!show)} variant="outline-warning">{content?.wallet?.choose_bank}</Button>
+          <h5 className="font-bold mb-3 text-white">{content?.wallet?.deposit}</h5>
+          <div className="text-right">
+            <button type="button" className="px-3 py-1 rounded-lg border border-yellow-400 text-yellow-400 bg-transparent hover:bg-yellow-400 hover:text-black transition mb-4" onClick={() => setShow(!show)}>{content?.wallet?.choose_bank}</button>
           </div>
         </div>
 
         {selectedBank && (
-          <div className="border border-light bg-transparent rounded-4 p-2 px-3 my-3 shadow-lg">
-            <div className="d-flex justify-content-between align-items-center">
-              <div className="d-flex">
+          <div className="border border-gray-300 bg-transparent rounded-2xl p-3 my-3 shadow-lg">
+            <div className="flex justify-between items-center">
+              <div className="flex items-center">
                 <div>
                   <img
-                    className="rounded-3 shadow"
+                    className="rounded-lg shadow w-12 h-12 object-cover"
                     src={"https://luckymillion.pro" + selectedBank.image}
-                    width={50}
                     alt={selectedBank.payment_type}
                   />
                 </div>
-                <div className="ms-2">
-                  <h6 className="fw-bold text-white">{selectedBank.payment_type}</h6>
-                  <h6 className="fw-bold text-white">{selectedBank.account_number}</h6>
+                <div className="ml-3">
+                  <h6 className="font-bold text-white">{selectedBank.payment_type}</h6>
+                  <h6 className="font-bold text-white">{selectedBank.account_number}</h6>
                 </div>
               </div>
               <div>
-                <button className="btn btn-outline-light" onClick={handleCopyText}>
+                <button type="button" className="px-3 py-1 rounded-lg border border-white text-white bg-transparent hover:bg-white hover:text-black transition" onClick={handleCopyText}>
                   Copy
                 </button>
               </div>
@@ -86,69 +85,66 @@ const Deposit = () => {
         )}
 
         <div className="row mb-2">
-          <div className="profileTitle col-5 mt-2">{content?.wallet?.amount} : </div>
-          <div className="col-7">
+          <div className="col-span-5 mt-2 text-gray-300 font-medium">{content?.wallet?.amount} : </div>
+          <div className="col-span-7">
             <input type="text"
-              className="form-control bg-transparent text-white placeholder-white" 
+              className="w-full bg-transparent border-b border-gray-500 text-white focus:outline-none py-1 placeholder-white" 
               placeholder={content?.wallet?.enter_amount}
               onChange={(e) => setAmount(e.target.value)}
               value={amount}
             />
-            {error ? (error.amount && <span className='text-danger'>*{error.amount}</span>) : errMsg && <span className='text-danger'>*{errMsg}</span>}
+            {error ? (error.amount && <span className='text-red-400 text-xs'>*{error.amount}</span>) : errMsg && <span className='text-red-400 text-xs'>*{errMsg}</span>}
           </div>
         </div>
         <div className="row mb-2">
-          <div className="profileTitle col-5 mt-2">{content?.wallet?.receipt}</div>
-          <div className="col-7">
-    <input
-  type="text"
-  className="form-control bg-transparent text-white placeholder-white"
-  placeholder={content?.wallet?.enter_last_6_digits}
-  onChange={(e) => setRefrence_no(e.target.value)}
-  value={refrence_no}
-/>
-            {error && error.refrence_no && <span className='text-danger'>*{error.refrence_no}</span>}
+          <div className="col-span-5 mt-2 text-gray-300 font-medium">{content?.wallet?.receipt}</div>
+          <div className="col-span-7">
+            <input
+              type="text"
+              className="w-full bg-transparent border-b border-gray-500 text-white focus:outline-none py-1 placeholder-white"
+              placeholder={content?.wallet?.enter_last_6_digits}
+              onChange={(e) => setRefrence_no(e.target.value)}
+              value={refrence_no}
+            />
+            {error && error.refrence_no && <span className='text-red-400 text-xs'>*{error.refrence_no}</span>}
           </div>
         </div>
         <div className="text-end mt-3">
           <button 
-          type='submit'
-          className="btn text-black navLoginBtn">
-            {loading && <Spinner className='me-1' animation="border" size="sm" />}
+            type='submit'
+            className="px-4 py-2 bg-yellow-400 text-black rounded-lg font-medium hover:bg-yellow-500 transition-colors">
+            {loading && <span className='inline-block mr-1 align-middle'><Spinner animation='border' size='sm' /></span>}
             {content?.wallet?.deposit}
           </button>
         </div>
       </form>
 
-
-      <Modal show={show} onHide={() => setShow(false)} className='cursor-pointer infoBankAccModal'>
-        <div className="px-1 py-2">
-          <Modal.Header >
-            <Modal.Title className=' text-center mx-auto'>
-              <h5 className="fw-bold infoBankAccModalTitle">{content?.wallet?.choose_bank}</h5>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body className='row'>
-            {banks && banks.map((bank, index) => {
-              return <div key={index} onClick={() => {
-                setShow(false)
-                setSelectedBank(bank)
-              }} className='d-flex gap-2 bg-white mb-2 p-2 rounded-3 text-black'>
-                <img src={"https://luckymillion.pro" + bank.image} className='bankModalImg img-fluid rounded-2' />
-                <div>
-                  <p>{content?.wallet?.account} : {bank.account_number}</p>
-                  <p>{content?.wallet?.account_name} : {bank.account_name}</p>
+      {show && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-60 animate-fadeIn">
+          <div className="bg-white rounded-2xl shadow-2xl p-4 w-full max-w-xs relative">
+            <div className="text-center mb-4">
+              <h5 className="font-bold text-lg text-yellow-600">{content?.wallet?.choose_bank}</h5>
+            </div>
+            <div className="space-y-2 mb-4">
+              {banks && banks.map((bank, index) => (
+                <div key={index} onClick={() => {
+                  setShow(false);
+                  setSelectedBank(bank);
+                }} className="flex gap-2 bg-gray-100 hover:bg-yellow-100 cursor-pointer p-2 rounded-lg text-black items-center">
+                  <img src={"https://luckymillion.pro" + bank.image} className="w-10 h-10 rounded-md object-cover" alt="bank" />
+                  <div>
+                    <p className="text-xs">{content?.wallet?.account} : {bank.account_number}</p>
+                    <p className="text-xs">{content?.wallet?.account_name} : {bank.account_name}</p>
+                  </div>
                 </div>
-              </div>
-            })}
-          </Modal.Body>
-          <Modal.Footer >
-            <button onClick={() => setShow(false)} className="navLoginBtn btn text-black fw-bold w-100">
-              ပယ်ဖျက်သည်
+              ))}
+            </div>
+            <button onClick={() => setShow(false)} className="w-full px-4 py-2 bg-yellow-400 text-black rounded-lg font-bold mt-2 hover:bg-yellow-500 transition">
+              ပိတ်မည်
             </button>
-          </Modal.Footer>
+          </div>
         </div>
-      </Modal>
+      )}
     </div>
   )
 }

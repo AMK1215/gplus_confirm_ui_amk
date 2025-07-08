@@ -84,57 +84,74 @@ const GameTabsLg = () => {
         {/** Each tab is a snap-center, touch-friendly, shadowed card */}
         {/* 2D Tab */}
         <button
-          className={`relative flex flex-col items-center justify-center min-w-[68px] p-2 rounded-xl transition-all duration-300 shadow-md backdrop-blur-md bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
+          className={`relative flex flex-col items-center justify-center min-w-[68px] p-1 rounded-2xl transition-all duration-300 shadow-lg bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
             ${type === "2d"
-              ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-lg"
+              ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-2xl"
               : "from-slate-800/80 to-slate-900/80 hover:from-yellow-200/30 hover:to-orange-200/30 hover:border-yellow-400/60"}
           `}
           style={{boxShadow: '0 2px 12px 0 rgba(0,0,0,0.14)'}}
           onClick={() => navigate("/2d")}
         >
-          <img
-            src={TwoDLogo}
-            className="w-8 h-8 mb-1 object-contain drop-shadow-lg group-hover:scale-105 transition-transform"
-            alt="2D"
-          />
-          <span className="text-xs font-extrabold text-white drop-shadow-md tracking-wide group-hover:text-yellow-300" style={{textShadow:'0 1px 4px #000'}}>2D</span>
+          <div className="relative w-14 h-14 aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 group-hover:from-yellow-400 group-hover:to-orange-400 group-hover:shadow-2xl transition-all duration-200 flex items-center justify-center">
+            <div className="w-full h-full bg-black/60 rounded-2xl flex items-center justify-center group-hover:bg-black/80 transition-all duration-200">
+              <img
+                src={TwoDLogo}
+                className="w-10 h-10 object-contain rounded-2xl group-hover:scale-105 transition-transform duration-200"
+                alt="2D"
+              />
+            </div>
+          </div>
+          <span className="mt-2 px-3 py-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-600 text-black font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
+            2D
+          </span>
         </button>
 
         {/* Shan Game Tab */}
         <button
-          className={`relative flex flex-col items-center justify-center min-w-[68px] p-2 rounded-xl transition-all duration-300 shadow-md backdrop-blur-md bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
+          className={`relative flex flex-col items-center justify-center min-w-[68px] p-1 rounded-2xl transition-all duration-300 shadow-lg bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
             ${type === "digitbet"
-              ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-lg"
+              ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-2xl"
               : "from-slate-800/80 to-slate-900/80 hover:from-yellow-200/30 hover:to-orange-200/30 hover:border-yellow-400/60"}
           `}
           style={{boxShadow: '0 2px 12px 0 rgba(0,0,0,0.14)'}}
           onClick={() => navigate("/shan")}
         >
-          <img
-            src={shanLogo}
-            className="w-8 h-8 mb-1 object-contain rounded drop-shadow-lg group-hover:scale-105 transition-transform"
-            alt="Shan Game"
-          />
-          <span className="text-xs font-extrabold text-white drop-shadow-md tracking-wide group-hover:text-yellow-300 text-center" 
-          style={{textShadow:'0 1px 4px #000'}}>ShanKoMe</span>
+          <div className="relative w-14 h-14 aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 group-hover:from-yellow-400 group-hover:to-orange-400 group-hover:shadow-2xl transition-all duration-200 flex items-center justify-center">
+            <div className="w-full h-full bg-black/60 rounded-2xl flex items-center justify-center group-hover:bg-black/80 transition-all duration-200">
+              <img
+                src={shanLogo}
+                className="w-10 h-10 object-contain rounded-2xl group-hover:scale-105 transition-transform duration-200"
+                alt="Shan Game"
+              />
+            </div>
+          </div>
+          <span className="mt-2 px-3 py-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-600 text-black font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
+            ShanKoMe
+          </span>
         </button>
 
         {/* Hot Games Tab */}
         <button
-          className={`relative flex flex-col items-center justify-center min-w-[68px] p-2 rounded-xl transition-all duration-300 shadow-md backdrop-blur-md bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
+          className={`relative flex flex-col items-center justify-center min-w-[68px] p-1 rounded-2xl transition-all duration-300 shadow-lg bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
             ${type === "hot"
-              ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-lg"
+              ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-2xl"
               : "from-slate-800/80 to-slate-900/80 hover:from-yellow-200/30 hover:to-orange-200/30 hover:border-yellow-400/60"}
           `}
           style={{boxShadow: '0 2px 12px 0 rgba(0,0,0,0.14)'}}
           onClick={() => navigate("/?type=hot")}
         >
-          <img
-            src={hotImg}
-            className="w-8 h-8 mb-1 object-contain drop-shadow-lg group-hover:scale-105 transition-transform"
-            alt="Hot Games"
-          />
-          <span className="text-xs font-extrabold text-white drop-shadow-md tracking-wide group-hover:text-yellow-300" style={{textShadow:'0 1px 4px #000'}}>Hot Games</span>
+          <div className="relative w-14 h-14 aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 group-hover:from-yellow-400 group-hover:to-orange-400 group-hover:shadow-2xl transition-all duration-200 flex items-center justify-center">
+            <div className="w-full h-full bg-black/60 rounded-2xl flex items-center justify-center group-hover:bg-black/80 transition-all duration-200">
+              <img
+                src={hotImg}
+                className="w-10 h-10 object-contain rounded-2xl group-hover:scale-105 transition-transform duration-200"
+                alt="Hot Games"
+              />
+            </div>
+          </div>
+          <span className="mt-2 px-3 py-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-600 text-black font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
+            Hot Games
+          </span>
         </button>
 
         {/* Dynamic Game Type Tabs */}
@@ -144,24 +161,30 @@ const GameTabsLg = () => {
             .map((item) => (
               <button
                 key={item.id}
-                className={`relative flex flex-col items-center justify-center min-w-[68px] p-2 rounded-xl transition-all duration-300 shadow-md backdrop-blur-md bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
+                className={`relative flex flex-col items-center justify-center min-w-[68px] p-1 rounded-2xl transition-all duration-300 shadow-lg bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
                   ${type == item.id
-                    ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-lg"
+                    ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-2xl"
                     : "from-slate-800/80 to-slate-900/80 hover:from-yellow-200/30 hover:to-orange-200/30 hover:border-yellow-400/60"}
                 `}
                 style={{boxShadow: '0 2px 12px 0 rgba(0,0,0,0.14)'}}
                 onClick={() => navigate(`?type=${item.id}`)}
               >
-                <img
-                  src={
-                    type == item.id
-                      ? activeImageMap[item.id]
-                      : baseImageMap[item.id]
-                  }
-                  className="w-8 h-8 mb-1 object-contain drop-shadow-lg group-hover:scale-105 transition-transform"
-                  alt={item.name}
-                />
-                <span className="text-xs font-extrabold text-white drop-shadow-md tracking-wide group-hover:text-yellow-300 text-center" style={{textShadow:'0 1px 4px #000'}}>{item.name}</span>
+                <div className="relative w-14 h-14 aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 group-hover:from-yellow-400 group-hover:to-orange-400 group-hover:shadow-2xl transition-all duration-200 flex items-center justify-center">
+                  <div className="w-full h-full bg-black/60 rounded-2xl flex items-center justify-center group-hover:bg-black/80 transition-all duration-200">
+                    <img
+                      src={
+                        type == item.id
+                          ? activeImageMap[item.id]
+                          : baseImageMap[item.id]
+                      }
+                      className="w-10 h-10 object-contain rounded-2xl group-hover:scale-105 transition-transform duration-200"
+                      alt={item.name}
+                    />
+                  </div>
+                </div>
+                <span className="mt-2 px-3 py-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-600 text-black font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
+                  {item.name}
+                </span>
               </button>
             ))}
       </div>

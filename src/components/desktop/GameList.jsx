@@ -184,10 +184,10 @@ export function GameList({loading, games}) {
 
       <div className="flex justify-end mb-3">
           <input
-          className="px-3 py-2 rounded-lg bg-[#23243a] text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-yellow-400 w-full max-w-xs"
-              placeholder="Search..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
+            className="px-3 py-2 rounded-lg bg-[#23243a] text-white placeholder-gray-400 border border-yellow-400/60 focus:outline-none focus:border-yellow-400 focus:ring-2 focus:ring-yellow-400 w-full max-w-xs transition"
+            placeholder="Search..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
 
@@ -195,29 +195,31 @@ export function GameList({loading, games}) {
         {displayGames.map((item) => (
             <div
                 key={item.id}
-            className="cursor-pointer group flex flex-col items-center"
-            onClick={() => handleLaunchGame(item)}
+                className="cursor-pointer group flex flex-col items-center"
+                onClick={() => handleLaunchGame(item)}
           >
-            <div className="relative w-full aspect-square overflow-hidden rounded-2xl group-hover:scale-105 transition-transform duration-200 shadow-lg">
-                  <img
-                      src={item.image_url}
-                      alt={item.game_name}
-                className="w-full h-full object-cover rounded-2xl"
-              />
+            <div className="relative w-full aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 group-hover:from-yellow-400 group-hover:to-orange-400 group-hover:shadow-2xl transition-all duration-200">
+              <div className="w-full h-full bg-black/60 rounded-2xl flex items-center justify-center group-hover:bg-black/80 transition-all duration-200">
+                <img
+                  src={item.image_url}
+                  alt={item.game_name}
+                  className="w-full h-full object-cover rounded-2xl group-hover:scale-105 transition-transform duration-200"
+                />
                 <button
-                className="absolute bottom-2 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-black font-bold text-xs shadow hover:scale-105 transition whitespace-nowrap"
-                onClick={e => { e.stopPropagation(); handleLaunchGame(item); }}
-                    disabled={launchingGameId === item.id}
+                  className="absolute bottom-2 left-1/2 -translate-x-1/2 px-4 py-1 rounded-full bg-gradient-to-r from-orange-400 to-yellow-500 text-white font-bold text-xs shadow hover:scale-105 transition whitespace-nowrap border border-yellow-300"
+                  onClick={e => { e.stopPropagation(); handleLaunchGame(item); }}
+                  disabled={launchingGameId === item.id}
                 >
                   {launchingGameId === item.id ? (
-                  <span className="inline-block w-4 h-4 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin align-middle" />
+                    <span className="inline-block w-4 h-4 border-2 border-yellow-400 border-t-transparent rounded-full animate-spin align-middle" />
                   ) : (
-                      content?.btn?.play_game || "Play"
+                    content?.btn?.play_game || "Play"
                   )}
                 </button>
               </div>
+            </div>
             <div className="mt-2 flex justify-center w-full">
-              <span className="px-4 py-1 bg-black/90 text-white font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap">
+              <span className="px-4 py-1 bg-black/80 text-yellow-300 font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
                 {item.game_name}
               </span>
             </div>

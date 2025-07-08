@@ -4,13 +4,13 @@ import { IoWalletSharp } from "react-icons/io5";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import "../assets/css/information.css";
 import Profile from "../components/mobile/Profile";
- import BankAccount from "../components/mobile/BankAccount";
+import BankAccount from "../components/mobile/BankAccount";
 import MoneyTransfer from "../components/mobile/MoneyTransfer";
 import ChangePassword from "../components/mobile/ChangePassword";
 import Log from "../components/mobile/Log";
 import Marquee from "../components/mobile/Marquee";
 import LanguageDropdown from "../components/LanguageDropdown";
- import { LanguageContext } from "../contexts/LanguageContext";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 const InformationPage = () => {
    const { content } = useContext(LanguageContext);
@@ -44,11 +44,11 @@ const InformationPage = () => {
     if (!tab) navigate("/information?tab=profile");
   }, []);
   return (
-    <div className="mb-5 pb-5" style={{ overflowX: "hidden" }}>
-      <div className="d-flex align-items-center bg-black">
+    <div className="mb-1 pb-1" style={{ overflowX: "hidden" }}>
+      {/* <div className="d-flex align-items-center bg-black">
         <Marquee />
         <LanguageDropdown/>
-      </div>
+      </div> */}
       <div  className="row infoHeading">
         {heading.map((item) => {
           return (
@@ -70,12 +70,11 @@ const InformationPage = () => {
           );
         })}
       </div>
-      <div className="py-4 px-1 px-sm-5 mx-auto">
+      <div className="py-1 px-1 px-sm-5 mx-auto">
         {tab === "profile" && (
           <>
             <Profile />
             {/* <BankAccount/> */}
-            <ChangePassword />
           </>
         )}
         {tab === "transfer" && <MoneyTransfer />}

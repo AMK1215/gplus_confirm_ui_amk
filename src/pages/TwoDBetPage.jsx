@@ -496,57 +496,54 @@ const TwoDBetPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-gradient-to-br from-slate-100 via-blue-50 to-blue-100 pb-24">
+        <div className="min-h-screen bg-gradient-to-br from-blue-100 via-white to-blue-200 pb-28">
             <ToastContainer />
-            {/* UserWallet (if needed) */}
-            {/* <UserWallet user={user} /> */}
-
-            {/* 2D Choose Option */}
-            <div className="max-w-md mx-auto pt-4">
-                    <TwoDChooseOption
-                        pathee={pathee}
-                        frontNumber={frontNumber}
-                        backNumber={backNumber}
-                        powerNumber={powerNumber}
-                        twentyNumbers={twentyNumbers}
-                        permunated={permunated}
-                        breakGroup={breakNums}
-                        singleDouble={singleDouble}
-                        addDigits={addDigits}
-                    />
+            {/* Top Action Buttons */}
+            <div className="max-w-md mx-auto flex justify-between items-center pt-6 pb-2 px-6 gap-4">
+                <div className="flex flex-col items-center">
+                    <button className="w-14 h-14 flex items-center justify-center rounded-full bg-white/60 backdrop-blur-md shadow-lg border border-pink-200 hover:scale-105 active:scale-95 transition-all">
+                        <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff"/><path d="M12 6v6l4 2" stroke="#FF2D55" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </button>
+                    <span className="mt-2 text-xs font-semibold text-gray-700">အမြန်ထိုး</span>
                 </div>
+                <div className="flex flex-col items-center">
+                    <button className="w-14 h-14 flex items-center justify-center rounded-full bg-white/60 backdrop-blur-md shadow-lg border border-pink-200 hover:scale-105 active:scale-95 transition-all">
+                        <svg width="32" height="32" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff"/><path d="M16 12a4 4 0 1 1-4-4" stroke="#FF2D55" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/><path d="M12 8V4m0 0 2 2m-2-2-2 2" stroke="#FF2D55" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                    </button>
+                    <span className="mt-2 text-xs font-semibold text-gray-700">ပတ်လည်</span>
+                </div>
+            </div>
 
+            {/* Card Inputs (Session & Amount) */}
             <div className="w-full max-w-sm mx-auto px-2">
-                {/* Modern Card UI for Closed Time and Amount */}
-                <div className="bg-white rounded-2xl shadow-lg p-4 mb-12">
-                  <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm font-medium text-gray-700">ပိတ်ရက်ချိန်</span>
-                    <select className="px-1 py-1 rounded-lg border border-gray-300 bg-gray-50 text-sm font-semibold focus:outline-none focus:ring-2 focus:ring-blue-400">
+                <div className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200 p-6 mb-10 flex flex-col gap-3">
+                  <div className="flex justify-between items-center mb-1">
+                    <span className="text-sm font-semibold text-gray-700">ပိတ်ရက်ချိန်</span>
+                    <select className="px-2 py-1 rounded-xl border border-blue-200 bg-white/80 text-sm font-bold focus:outline-none focus:ring-2 focus:ring-blue-400 shadow-sm">
                       <option>12:00 PM</option>
                       <option>04:30 PM</option>
                     </select>
                   </div>
-                  {/* <div className="font-bold text-lg text-gray-900 mb-2">Closed Time!</div> */}
-                  <div className="text-sm text-gray-700 mb-1">လောင်းကြေးထည့်ပါ။</div>
+                  <div className="text-xs text-gray-600 mb-1">လောင်းကြေးထည့်ပါ။</div>
                   <input
                     type="number"
                     value={amount}
                     onChange={e => setAmount(Number(e.target.value))}
-                    className="w-full px-4 py-2 rounded-xl border border-gray-200 bg-gray-50 text-lg text-center mb-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 rounded-xl border border-yellow-300 bg-white/80 text-lg text-center font-bold focus:outline-none focus:ring-2 focus:ring-yellow-400 shadow-sm"
                     placeholder="100"
                     min={1}
                   />
-                  {/* <div className="text-blue-500 text-sm text-center mt-2 cursor-pointer">အကြောင်းအရာရွေးချယ်ရန်</div> */}
                 </div>
 
                 {/* Number Grid */}
-                <div className="bg-white/90 rounded-3xl shadow-xl p-4 border border-blue-200 mb-8">
-                    {/* <h2 className="text-center text-blue-700 font-bold text-lg mb-2">အကြောင်းအရာရွေးချယ်ရန်</h2> */}
-                    {/* Scrollable Number Grid */}
-                    <div className="h-96 overflow-y-auto rounded-2xl border border-blue-100 bg-white/80 p-3 shadow-inner">
+                <div className="bg-white/70 backdrop-blur-xl rounded-3xl shadow-2xl border border-blue-200 mb-8 p-4 relative">
+                    {/* Info icon for color codes */}
+                    <button onClick={handleShow} className="absolute top-3 right-3 w-7 h-7 flex items-center justify-center rounded-full bg-gradient-to-br from-yellow-200 to-pink-200 shadow border border-yellow-300 hover:scale-110 transition-all">
+                        <svg width="18" height="18" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" fill="#fff"/><path d="M12 8v4m0 4h.01" stroke="#FF7A00" strokeWidth="2" strokeLinecap="round"/></svg>
+                    </button>
+                    <div className="h-96 overflow-y-auto rounded-2xl border border-blue-100 bg-white/60 p-3 shadow-inner">
                         <div className="grid grid-cols-5 gap-3">
                             {numbers_static.two_digits.map((item, idx) => {
-                                // Calculate percent for bar color
                                 const percent = Math.round((item.over_all_remaining / numbers_static.default_break) * 100);
                                 let barColor = "bg-yellow-400";
                                 if (percent < 30) barColor = "bg-pink-400";
@@ -558,12 +555,12 @@ const TwoDBetPage = () => {
                                         key={item.two_digit}
                                         type="button"
                                         onClick={() => toggleDigit(item.two_digit)}
-                                        className={`flex flex-col items-center justify-center rounded-lg px-1 py-2 border-2 focus:outline-none select-none transition-all duration-200
-                                            ${isSelected ? 'bg-gradient-to-br from-blue-200 to-blue-100 border-blue-500 ring-2 ring-blue-400 shadow-md scale-105' : 'bg-white border-transparent hover:bg-blue-50'}
+                                        className={`flex flex-col items-center justify-center rounded-full px-0 py-2 border-2 focus:outline-none select-none transition-all duration-200
+                                            ${isSelected ? 'bg-gradient-to-br from-blue-200 to-blue-100 border-blue-500 ring-2 ring-blue-400 shadow-md scale-105' : 'bg-white/80 border-transparent hover:bg-blue-50'}
                                         `}
                                     >
-                                        <span className="font-bold text-lg text-gray-800">{item.two_digit}</span>
-                                        <div className="w-8 h-1.5 rounded-full mt-1 mb-1 overflow-hidden">
+                                        <span className="font-extrabold text-lg text-gray-800 drop-shadow-sm tracking-wide">{item.two_digit}</span>
+                                        <div className="w-8 h-1.5 rounded-full mt-1 mb-1 overflow-hidden bg-gray-200">
                                             <div className={`h-full rounded-full transition-all duration-300 ${barColor}`} style={{ width: `${Math.min(percent, 100)}%` }}></div>
                                         </div>
                                     </button>
@@ -574,9 +571,9 @@ const TwoDBetPage = () => {
                 </div>
 
                 {/* Sticky Bet Button */}
-                <div className="fixed bottom-12 left-1/2 -translate-x-1/2 w-full max-w-sm px-4 z-50">
+                <div className="fixed bottom-20 left-1/2 -translate-x-1/2 w-full max-w-sm px-4 z-50">
                     <button
-                        className="w-full py-3 rounded-xl bg-gradient-to-br from-yellow-400 to-orange-500 text-white font-bold text-lg shadow-lg hover:scale-105 active:scale-95 transition-all"
+                        className="w-full py-3 rounded-2xl bg-gradient-to-br from-yellow-400 via-orange-400 to-orange-500 text-white font-extrabold text-lg shadow-xl hover:scale-105 active:scale-95 transition-all tracking-wide drop-shadow-lg"
                         onClick={() => {
                             const betData = selectedDigits.map(num => ({ num, amount }));
                             localStorage.setItem("bets", JSON.stringify({ totalAmount: betData.reduce((sum, b) => sum + b.amount, 0), amounts: betData }));
@@ -588,32 +585,32 @@ const TwoDBetPage = () => {
                 </div>
             </div>
 
-            {/* Example Modal (if used) */}
-                    <Modal show={show} onHide={handleClose} centered>
-                <Modal.Header closeButton className="!border-b-0">
+            {/* Modern Glassy Modal */}
+            <Modal show={show} onHide={handleClose} centered contentClassName="!rounded-3xl !bg-white/80 !backdrop-blur-xl !shadow-2xl !border !border-blue-200">
+                <Modal.Header closeButton className="!border-b-0 !rounded-t-3xl !bg-white/60">
                     <Modal.Title>
                         <span className="font-bold text-lg">အရောင်ရှင်းလင်းချက်</span>
-                            </Modal.Title>
-                        </Modal.Header>
+                    </Modal.Title>
+                </Modal.Header>
                 <Modal.Body className="flex flex-col gap-4 p-6">
                     <span className="text-center font-bold text-xs">ထီထိုးငွေ ၁၀၀% ပြည့်ပါက ဂဏန်းပိတ်ပါမည်။</span>
-                            <div className="d-grid gap-3">
-                                {colorOptions.map((item) => (
-                                    <div key={item.id} className="d-flex align-items-center gap-2">
-                                        <div
-                                            style={{ background: item.color, width: '16px', height: '16px' }}
-                                            className="rounded-circle"
-                                        ></div>
-                                        <small className="text-muted">{item.text}</small>
-                                    </div>
-                                ))}
+                    <div className="flex flex-col gap-3 mt-2">
+                        {colorOptions.map((item) => (
+                            <div key={item.id} className="flex items-center gap-3">
+                                <div
+                                    style={{ background: item.color }}
+                                    className="rounded-full w-6 h-6 border border-gray-300 shadow"
+                                ></div>
+                                <span className="text-sm text-gray-700 font-semibold">{item.text}</span>
                             </div>
-                        </Modal.Body>
-                <Modal.Footer className="flex justify-end gap-3 p-4">
-                    <button className="px-4 py-2 rounded-lg bg-gray-400 text-white font-semibold shadow hover:bg-gray-500 transition">Close</button>
+                        ))}
+                    </div>
+                </Modal.Body>
+                <Modal.Footer className="flex justify-end gap-3 p-4 !rounded-b-3xl !bg-white/60">
+                    <button onClick={handleClose} className="px-5 py-2 rounded-xl bg-gray-400/80 text-white font-semibold shadow hover:bg-gray-500 transition-all">Close</button>
                 </Modal.Footer>
-                    </Modal>
-                </div>
+            </Modal>
+        </div>
     );
 };
 

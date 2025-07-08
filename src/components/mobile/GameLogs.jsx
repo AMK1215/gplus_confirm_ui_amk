@@ -12,63 +12,39 @@ export default function GameLogs() {
 
   return (
     <>
-      <div className="container my-4 mb-5 pb-5">
-        <div className="d-flex justify-content-center mb-4 gap-3">
-          <button className={`btn btn-sm btn-${selectedDate === "today" ? "light" : "outline-light"}`} onClick={() => setSelectedDate("today")}>
+      <div className="max-w-2xl mx-auto my-4 mb-5 pb-5 px-2">
+        <div className="flex justify-center mb-4 gap-2 flex-wrap">
+          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'today' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('today')}>
             {content?.log?.today}
           </button>
-          <button className={`btn btn-sm btn-${selectedDate === "yesterday" ? "light" : "outline-light"}`} onClick={() => setSelectedDate("yesterday")}>
+          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'yesterday' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('yesterday')}>
             {content?.log?.yesterday}
           </button>
-          <button className={`btn btn-sm btn-${selectedDate === "this_week" ? "light" : "outline-light"}`} onClick={() => setSelectedDate("this_week")}>
+          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'this_week' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('this_week')}>
             {content?.log?.this_week}
           </button>
-          <button className={`btn btn-sm btn-${selectedDate === "last_week" ? "light" : "outline-light"}`} onClick={() => setSelectedDate("last_week")}>
+          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'last_week' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('last_week')}>
             {content?.log?.last_week}
           </button>
         </div>
-        <div className="table-responsive">
-          <Table striped bordered hover variant="dark" className='text-center'>
-            <thead>
-              <tr>
-                <th>
-                  <small>{content?.log?.from}</small>
-                </th>
-                <th>
-                  <small>{content?.log?.to}</small>
-                </th>
-                <th>
-                  <small>{content?.log?.game_name}</small>
-                </th>
-                <th>
-                  <small>{content?.log?.count}</small>
-                </th>
-                <th>
-                  <small>{content?.log?.bet_amount}</small>
-                </th>
-                <th>
-                  <small>{content?.log?.win_lose || "Win/Loss"}</small>
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {loading ? <tr><td colSpan={6}>Loading....</td></tr> : logs && logs.length === 0 ? <tr><td colSpan={6}>{content?.no_data}</td></tr> : logs && logs.map((log, index) =>(
-                <tr key={index}>
-                  <td>{log.from}</td>
-                  <td>{log.to}</td>
-                  <td>{log.game_name}</td>
-                  <td>{log.spin_count}</td>
-                  <td>{parseFloat(log.turnover).toLocaleString()}</td>
-                  <td className={log.win_loss >= 0 ? 'text-success' : 'text-danger'}>
-                    {parseFloat(log.win_loss).toLocaleString()}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </Table>
-
+        <div className="space-y-3">
+          {loading ? (
+            <div className="text-center py-8 text-gray-400 font-semibold">Loading...</div>
+          ) : logs && logs.length === 0 ? (
+            <div className="text-center py-8 text-gray-400 font-semibold">{content?.no_data}</div>
+          ) : logs && logs.map((log, index) => (
+            <div key={index} className="rounded-xl border border-gray-700 bg-white/10 shadow p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
+              <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-1 text-xs md:text-sm">
+                <div><span className="font-semibold text-gray-400">{content?.log?.from}:</span> <span>{log.from}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.log?.to}:</span> <span>{log.to}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.log?.game_name}:</span> <span>{log.game_name}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.log?.count}:</span> <span>{log.spin_count}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.log?.bet_amount}:</span> <span>{parseFloat(log.turnover).toLocaleString()}</span></div>
+                <div><span className="font-semibold text-gray-400">{content?.log?.win_lose || 'Win/Loss'}:</span> <span className={log.win_loss >= 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold'}>{parseFloat(log.win_loss).toLocaleString()}</span></div>
+              </div>
+            </div>
+          ))}
         </div>
-
       </div>
     </>
   )

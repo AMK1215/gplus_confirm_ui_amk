@@ -24,53 +24,49 @@ const ChangePassword = () => {
 
   return (
     <div>
-      <form className="profileForm mb-5 px-3 mt-4 py-4 rounded-4" onSubmit={changePassword}>
-        <div className="d-flex justify-content-between">
-          <h5 className="fw-bold mb-3">{content?.profile?.change_password}</h5>
-          <div>
-            {errMsg && (
-              <div className="alert alert-danger alert-dismissible" role="alert">
-                {errMsg}
-              </div>
-            )}
-          </div>
+      <form className="bg-white/10 backdrop-blur-sm mb-5 px-3 mt-4 py-4 rounded-2xl border border-white/20" onSubmit={changePassword}>
+        <div className="flex justify-between items-center mb-3">
+          <h5 className="font-bold text-white">{content?.profile?.change_password}</h5>
+          {errMsg && (
+            <div className="bg-red-500 text-white text-xs px-2 py-1 rounded ml-2">{errMsg}</div>
+          )}
         </div>
-        <div className="row mb-2">
-          <div className="profileTitle col-5 mt-2">{content?.profile?.old_password}</div>
-          <div className="col-7">
+        <div className="grid grid-cols-12 mb-2 items-center">
+          <div className="col-span-5 mt-2 text-gray-300 font-medium">{content?.profile?.old_password}</div>
+          <div className="col-span-7">
             <input type="password"
-              className="form-control bg-transparent text-white"
+              className="w-full bg-transparent border-b border-gray-500 text-white focus:outline-none py-1"
               onChange={e => setCurrentPassword(e.target.value)}
               value={current_password}
             />
-            {error && error.current_password && (<span className='text-danger'>*{error.current_password}</span>)}
+            {error && error.current_password && (<span className='text-red-400 text-xs'>*{error.current_password}</span>)}
           </div>
         </div>
-        <div className="row mb-2">
-          <div className="profileTitle col-5 mt-2">{content?.profile?.new_password}</div>
-          <div className="col-7">
+        <div className="grid grid-cols-12 mb-2 items-center">
+          <div className="col-span-5 mt-2 text-gray-300 font-medium">{content?.profile?.new_password}</div>
+          <div className="col-span-7">
             <input type="password"
-              className="form-control bg-transparent text-white"
+              className="w-full bg-transparent border-b border-gray-500 text-white focus:outline-none py-1"
               onChange={e => setPassword(e.target.value)}
               value={password}
             />
-            {error && error.password && (<span className='text-danger'>*{error.password}</span>)}
+            {error && error.password && (<span className='text-red-400 text-xs'>*{error.password}</span>)}
           </div>
         </div>
-        <div className="row mb-2">
-          <div className="profileTitle col-5 mt-2">{content?.profile?.confirm_password}</div>
-          <div className="col-7">
+        <div className="grid grid-cols-12 mb-2 items-center">
+          <div className="col-span-5 mt-2 text-gray-300 font-medium">{content?.profile?.confirm_password}</div>
+          <div className="col-span-7">
             <input type="password"
-              className="form-control bg-transparent text-white"
+              className="w-full bg-transparent border-b border-gray-500 text-white focus:outline-none py-1"
               onChange={e => setPasswordConfirmation(e.target.value)}
               value={password_confirmation}
             />
-            {error && error.password_confirmation && (<span className='text-danger'>*{error.password_confirmation}</span>)}
+            {error && error.password_confirmation && (<span className='text-red-400 text-xs'>*{error.password_confirmation}</span>)}
           </div>
         </div>
-        <div className="text-end mt-3">
-          <button className="btn btn-danger text-white" type="submit">
-            {loading && <Spinner size="sm" className='me-1' />}
+        <div className="text-right mt-3">
+          <button className="px-4 py-2 bg-red-600 text-white rounded-lg font-medium hover:bg-red-700 transition-colors" type="submit">
+            {loading && <SmallSpinner className='inline-block mr-1' />}
             {content?.profile?.change_password}
           </button>
         </div>
