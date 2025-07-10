@@ -125,7 +125,29 @@ const en_data = {
         hotline: "Hotline",
         copy: "Copy"
     },
-    no_data: "No Data Found"
+    no_data: "No Data Found",
+    two_d_winners: {
+        title: "2D Daily Winners",
+        subtitle: "Lucky Number Winners",
+        date: "Date",
+        session: "Session",
+        morning: "Morning",
+        evening: "Evening",
+        all_sessions: "All Sessions",
+        winning_number: "Winning Number",
+        winners: "Winners",
+        bet_amount: "Bet Amount",
+        win_amount: "Win Amount",
+        no_winners: "No winners for this session",
+        refresh: "Refresh",
+        loading: "Loading...",
+        actions: "Actions"
+    },
+    two_d_history_modal: {
+        title: "Choose History Session",
+        morning: "Morning History",
+        evening: "Evening History"
+    }
 }
 
 export default en_data;

@@ -24,6 +24,7 @@ import TransactionsPage from "../pages/Slot/Transaction";
 import ExchangeTranLog from "../components/desktop/ExchangeTranLog";
 import MorningBetSlipDisplay from "../components/MorningBetSlipDisplay";
 import EveningBtSlipDisplay from "../components/EveningBtSlipDisplay";
+import TwoDDailyWinner from "../components/TwoDDailyWinner";
 
 
 export const router = createBrowserRouter([
@@ -99,6 +100,10 @@ export const router = createBrowserRouter([
         {
           path: '/evening-bet-slip',
           element: <EveningBtSlipDisplay />
+        },
+        {
+          path: '/2d/daily-winner',
+          element: <TwoDDailyWinner />
         },
         {
           path : '/wallet',

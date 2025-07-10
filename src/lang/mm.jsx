@@ -131,7 +131,29 @@ const mm_data = {
         hotline: "ဟော့လိုင်း",
         copy: "ကူးယူရန်"
     },
-    no_data: "အချက်အလက်များမရှိသေးပါ။"
+    no_data: "အချက်အလက်များမရှိသေးပါ။",
+    two_d_winners: {
+        title: "ထိုးဂဏန်းအနိုင်ရရှိသူများ",
+        subtitle: "ကံထူးရှင်များ",
+        date: "နေ့ရက်",
+        session: "အပိုင်း",
+        morning: "မနက်ပိုင်း",
+        evening: "ညနေပိုင်း",
+        all_sessions: "အပိုင်းအားလုံး",
+        winning_number: "အနိုင်ဂဏန်း",
+        winners: "အနိုင်ရရှိသူများ",
+        bet_amount: "လောင်းကြေး",
+        win_amount: "အနိုင်ငွေ",
+        no_winners: "ဤအပိုင်းအတွက် အနိုင်ရရှိသူမရှိပါ",
+        refresh: "ပြန်လည်ဖွင့်ရန်",
+        loading: "ဖွင့်နေသည်...",
+        actions: "လုပ်ဆောင်ချက်များ"
+    },
+    two_d_history_modal: {
+        title: "မှတ်တမ်း ရွေးပါ။",
+        morning: "မနက်ပိုင်းမှတ်တမ်း",
+        evening: "ညနေပိုင်းမှတ်တမ်း"
+    }
 }
 
 export default mm_data;

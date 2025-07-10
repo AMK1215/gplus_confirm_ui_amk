@@ -1,5 +1,5 @@
 // TwoDPage.jsx
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 // React-Bootstrap Modal is kept for simplicity.
 import { Modal } from "react-bootstrap";
@@ -13,6 +13,7 @@ import holiday from "../assets/img/holiday.png";
 import UserWallet from "../components/UserWallet";
 // Import custom CSS
 import "../assets/css/twoD.css";
+import { LanguageContext } from "../contexts/LanguageContext";
 
 const TwoDPage = () => {
     // Static times for the modal, removing unused ones
@@ -31,7 +32,7 @@ const TwoDPage = () => {
     // Static data for lottery home links
     const lottoHome = [
         { id: 1, title: "မှတ်တမ်း", img: list, link: "/morning-bet-slip" },
-        { id: 2, title: "ကံထူးရှင်များ", img: winner, link: "/2d/winners" },
+        { id: 2, title: "ကံထူးရှင်များ", img: winner, link: "/2d/daily-winner" },
         { id: 3, title: "ပိတ်ရက်", img: holiday, link: "/2d/holiday" },
     ];
 
@@ -64,6 +65,7 @@ const TwoDPage = () => {
     // --- End Live 2D Data Integration ---
 
     const navigate = useNavigate();
+    const { content } = useContext(LanguageContext);
 
     // Removed authentication check useEffect as API is removed.
     // useEffect(() => {
@@ -228,7 +230,9 @@ const TwoDPage = () => {
           <Modal show={showHistoryModal} onHide={handleHistoryModalClose} centered dialogClassName="z-50 mb-32">
             <Modal.Header closeButton className="!border-b-0 bg-gradient-to-br from-yellow-400/40 via-white/10 to-blue-400/40 rounded-t-2xl">
               <Modal.Title>
-                <span className="font-bold text-lg text-blue-700 drop-shadow">မှတ်တမ်း ရွေးပါ။</span>
+                <span className="font-bold text-lg text-blue-700 drop-shadow">
+                  {content?.two_d_history_modal?.title || "မှတ်တမ်း ရွေးပါ။"}
+                </span>
               </Modal.Title>
             </Modal.Header>
             <Modal.Body className="flex flex-col gap-4 p-6 bg-white/80 rounded-b-2xl border-t-0">
