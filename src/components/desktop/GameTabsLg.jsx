@@ -34,7 +34,7 @@ const GameTabsLg = () => {
   } = useContext(GameContext);
   // const gameProvider = providers && providers.find((p) => p?.code == provider)?.id;
 
-  // const providerUrl = https://luckymillion.pro/api/providers/
+  // const providerUrl = https://ponewine20x.xyz/api/providers/
 
   const baseImageMap = {
     1: "/images/Final_All/Slot/SlotPng.png",
@@ -83,7 +83,7 @@ const GameTabsLg = () => {
       <div className="flex overflow-x-auto gap-3 pb-4 scrollbar-hide snap-x snap-mandatory">
         {/** Each tab is a snap-center, touch-friendly, shadowed card */}
         {/* 2D Tab */}
-        <button
+        {/* <button
           className={`relative flex flex-col items-center justify-center min-w-[68px] p-1 rounded-2xl transition-all duration-300 shadow-lg bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
             ${type === "2d"
               ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-2xl"
@@ -104,10 +104,10 @@ const GameTabsLg = () => {
           <span className="mt-2 px-3 py-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-600 text-black font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
             2D
           </span>
-        </button>
+        </button> */}
 
         {/* Shan Game Tab */}
-        <button
+        {/* <button
           className={`relative flex flex-col items-center justify-center min-w-[68px] p-1 rounded-2xl transition-all duration-300 shadow-lg bg-gradient-to-br border-2 border-transparent group snap-center active:scale-95 focus:outline-none focus:ring-2 focus:ring-yellow-400 select-none
             ${type === "digitbet"
               ? "from-yellow-400/90 to-orange-500/90 border-yellow-400 ring-2 ring-yellow-300/60 shadow-2xl"
@@ -128,7 +128,7 @@ const GameTabsLg = () => {
           <span className="mt-2 px-3 py-1 bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-600 text-black font-bold text-xs rounded-full shadow text-center max-w-[90%] truncate whitespace-nowrap border border-yellow-300 group-hover:scale-105 transition-transform duration-200">
             ShanKoMe
           </span>
-        </button>
+        </button> */}
 
         {/* Hot Games Tab */}
         <button

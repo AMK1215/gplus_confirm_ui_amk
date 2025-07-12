@@ -21,9 +21,20 @@ const GeneralContextProvider = ({ children }) => {
     const { data: promotions, loading4} = useFetch(BASE_URL + "/promotion");
     const { data: contacts, loading5} = useFetch(BASE_URL + "/contact");
    
-
-
-
+    // Debug logging
+    console.log('GeneralContext Debug:', {
+        banner,
+        bannerLength: banner?.length,
+        ads_banner,
+        banner_text,
+        promotions,
+        contacts,
+        loading1,
+        loading2,
+        loading3,
+        loading4,
+        loading5
+    });
 
    const loading = loading1 || loading2 || loading3 || loading4 || loading5;
 

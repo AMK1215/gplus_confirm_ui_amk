@@ -5,7 +5,7 @@ import Login from '../../pages/Login';
 import "../../assets/css/navbar.css";
 import { IoMdClose } from "react-icons/io";
 import home from "../../assets/img/home.svg";
-import logo from "../../assets/img/logo.png";
+import logo from "../../assets/img/black_logo.png";
 import money from "../../assets/img/money.png";
 import register from "../../assets/img/register.svg";
 import promotion from "../../assets/img/promotion.svg";

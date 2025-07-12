@@ -60,8 +60,8 @@ const SidebarLg = ({ show, onClose }) => {
     { img: log, name: content?.nav?.logs?.toUpperCase(), link: '/information?tab=logs&type=deposit' },
     { img: promotion, name: content?.nav?.promotion?.toUpperCase(), link: '/promotion' },
     { img: contact, name: content?.nav?.contact?.toUpperCase(), link: '/contact' },
-    { img: ranking, name: content?.nav?.ranking, link: '/ranking' },
-    { img: log, name: 'MORNING BET SLIP', link: '/morning-bet-slip' }
+    // { img: ranking, name: content?.nav?.ranking, link: '/ranking' },
+    // { img: log, name: 'MORNING BET SLIP', link: '/morning-bet-slip' }
   ];
   const items = [
     { img: slot, link: "/?type=slot", value: "2", name: content?.game_type?.slot },

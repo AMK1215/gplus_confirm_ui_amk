@@ -31,7 +31,7 @@ const digitImages = [
 function useUser() {
   const [user, setUser] = useState(null);
   useEffect(() => {
-    fetch('https://luckymillion.pro/api/user', {
+    fetch('https://ponewine20x.xyz/api/user', {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token'),
         'Accept': 'application/json'
@@ -126,7 +126,7 @@ export default function DigitBetGame() {
   const handleRollRef = useRef();
 
   useEffect(() => {
-    fetch('https://luckymillion.pro/api/digitbet/history', {
+    fetch('https://ponewine20x.xyz/api/digitbet/history', {
       headers: {
         'Authorization': 'Bearer ' + localStorage.getItem('token'),
         'Accept': 'application/json'
@@ -177,7 +177,7 @@ export default function DigitBetGame() {
         multiplier: betMultiplier
       };
 
-      const response = await fetch('https://luckymillion.pro/api/digitbet', {
+      const response = await fetch('https://ponewine20x.xyz/api/digitbet', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -202,7 +202,7 @@ export default function DigitBetGame() {
       } else {
         setApiResponseMessage(`❌ ${data.message}`);
         // If there's an error, refresh history separately
-        fetch('https://luckymillion.pro/api/digitbet/history', {
+        fetch('https://ponewine20x.xyz/api/digitbet/history', {
           headers: {
             'Authorization': 'Bearer ' + localStorage.getItem('token'),
             'Accept': 'application/json'

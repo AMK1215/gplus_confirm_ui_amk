@@ -7,7 +7,11 @@ const Carousels = () => {
   const { user } = useContext(AuthContext);
   const [current, setCurrent] = useState(0);
 
-  if (!user) return null;
+  // Debug logging
+  console.log('Carousel Debug:', { banners, user, bannersLength: banners?.length });
+
+  // Temporarily remove user check to see if data is being fetched
+  // if (!user) return null;
 
   const goTo = (idx) => setCurrent(idx);
   const prev = () => setCurrent((prev) => (prev === 0 ? (banners.length - 1) : prev - 1));
@@ -17,12 +21,16 @@ const Carousels = () => {
     <div className="w-full px-0 sm:px-2 pt-0 pb-2">
       <div className="relative w-full rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-br from-yellow-400/70 via-white/10 to-yellow-600/70 p-1 border-2 border-transparent">
         <div className="w-full h-full rounded-3xl bg-[#181A29]">
-          {banners && banners.length > 0 && (
+          {banners && banners.length > 0 ? (
             <img
-              src={"https://luckymillion.pro/api/.." + banners[current].img_url}
+              src={"https://ponewine20x.xyz/api/.." + banners[current].img_url}
               className="w-full h-48 sm:h-64 object-cover object-center transition-all duration-500 rounded-3xl"
               alt={"Banner " + (current + 1)}
             />
+          ) : (
+            <div className="w-full h-48 sm:h-64 flex items-center justify-center text-white">
+              <p>No banners available</p>
+            </div>
           )}
           {/* Navigation Buttons */}
           {banners && banners.length > 1 && (

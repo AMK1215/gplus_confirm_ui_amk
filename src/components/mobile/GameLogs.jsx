@@ -1,51 +1,97 @@
 import React, { useContext, useState } from 'react'
-import { Table } from 'react-bootstrap'
 import { LanguageContext } from '../../contexts/LanguageContext';
 import useFetch from '../../hooks/useFetch';
 import BASE_URL from '../../hooks/baseUrl';
-
+import { FaGamepad, FaCalendarAlt, FaChartLine, FaTrophy, FaCoins, FaArrowUp, FaArrowDown, FaClock, FaSpinner } from 'react-icons/fa'
 
 export default function GameLogs() {
   const { content } = useContext(LanguageContext);
   const [selectedDate, setSelectedDate] = useState('today');
   const {data:logs, loading} = useFetch(`${BASE_URL}/player/game-logs?type=${selectedDate}`); 
 
-  return (
-    <>
-      <div className="max-w-2xl mx-auto my-4 mb-5 pb-5 px-2">
-        <div className="flex justify-center mb-4 gap-2 flex-wrap">
-          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'today' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('today')}>
-            {content?.log?.today}
-          </button>
-          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'yesterday' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('yesterday')}>
-            {content?.log?.yesterday}
-          </button>
-          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'this_week' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('this_week')}>
-            {content?.log?.this_week}
-          </button>
-          <button className={`px-3 py-1 rounded-lg font-semibold text-sm transition ${selectedDate === 'last_week' ? 'bg-yellow-400 text-black shadow' : 'bg-gray-800 text-white border border-gray-600 hover:bg-yellow-100 hover:text-black'}`} onClick={() => setSelectedDate('last_week')}>
-            {content?.log?.last_week}
-          </button>
-        </div>
-        <div className="space-y-3">
-          {loading ? (
-            <div className="text-center py-8 text-gray-400 font-semibold">Loading...</div>
-          ) : logs && logs.length === 0 ? (
-            <div className="text-center py-8 text-gray-400 font-semibold">{content?.no_data}</div>
-          ) : logs && logs.map((log, index) => (
-            <div key={index} className="rounded-xl border border-gray-700 bg-white/10 shadow p-4 flex flex-col md:flex-row md:items-center md:justify-between gap-2">
-              <div className="flex-1 grid grid-cols-2 md:grid-cols-3 gap-x-4 gap-y-1 text-xs md:text-sm">
-                <div><span className="font-semibold text-gray-400">{content?.log?.from}:</span> <span>{log.from}</span></div>
-                <div><span className="font-semibold text-gray-400">{content?.log?.to}:</span> <span>{log.to}</span></div>
-                <div><span className="font-semibold text-gray-400">{content?.log?.game_name}:</span> <span>{log.game_name}</span></div>
-                <div><span className="font-semibold text-gray-400">{content?.log?.count}:</span> <span>{log.spin_count}</span></div>
-                <div><span className="font-semibold text-gray-400">{content?.log?.bet_amount}:</span> <span>{parseFloat(log.turnover).toLocaleString()}</span></div>
-                <div><span className="font-semibold text-gray-400">{content?.log?.win_lose || 'Win/Loss'}:</span> <span className={log.win_loss >= 0 ? 'text-green-500 font-bold' : 'text-red-500 font-bold'}>{parseFloat(log.win_loss).toLocaleString()}</span></div>
-              </div>
-            </div>
-          ))}
+  // Date filter options
+  const dateFilters = [
+    { key: 'today', label: content?.log?.today || 'Today', icon: <FaCalendarAlt /> },
+    { key: 'yesterday', label: content?.log?.yesterday || 'Yesterday', icon: <FaClock /> },
+    { key: 'this_week', label: content?.log?.this_week || 'This Week', icon: <FaChartLine /> },
+    { key: 'last_week', label: content?.log?.last_week || 'Last Week', icon: <FaTrophy /> }
+  ];
+
+  // Loading state
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-[#101223] via-[#1a1d3a] to-[#101223] flex items-center justify-center">
+        <div className="text-center">
+          <FaSpinner className="animate-spin text-4xl text-yellow-400 mx-auto mb-4" />
+          <p className="text-white text-lg">Loading game logs...</p>
         </div>
       </div>
-    </>
+    );
+  }
+
+  return (
+    <div className="max-w-4xl mx-auto my-4 mb-5 pb-5 px-1 sm:px-2">
+      <h2 className="text-2xl font-extrabold text-yellow-400 mb-6 text-center tracking-wide drop-shadow flex items-center justify-center gap-2">
+        <FaGamepad className="text-yellow-400" /> Game Logs
+      </h2>
+      <p className="text-gray-300 text-center mb-4">Track your gaming activity and performance across different time periods</p>
+      {/* Date Filter Buttons in a Row */}
+      <div className="flex flex-row flex-wrap items-center justify-center gap-4 mb-10">
+        {dateFilters.map((filter) => (
+          <button
+            key={filter.key}
+            onClick={() => setSelectedDate(filter.key)}
+            className={`flex items-center gap-2 min-w-[110px] px-5 py-2.5 rounded-xl font-semibold text-base transition-all duration-300 focus:outline-none border-2 border-transparent hover:scale-105 hover:shadow-lg ${
+              selectedDate === filter.key
+                ? 'bg-gradient-to-r from-yellow-400 to-orange-500 text-black shadow-lg'
+                : 'bg-gradient-to-br from-[#181A29] to-[#1f2338] text-white border border-gray-700/50 hover:border-yellow-400/50 hover:bg-[#1f2338]'
+            }`}
+          >
+            <span className="text-lg">{filter.icon}</span>
+            <span>{filter.label}</span>
+          </button>
+        ))}
+      </div>
+      {/* Game Logs Table (always visible, responsive) */}
+      <div className="overflow-x-auto rounded-2xl border border-gray-700 bg-white/5 shadow-lg">
+        {(!logs || logs.length === 0) ? (
+          <div className="w-full py-16 flex flex-col items-center justify-center">
+            <div className="text-gray-400 text-6xl mb-4">📊</div>
+            <h3 className="text-xl font-semibold text-white mb-2">No Game Logs Found</h3>
+            <p className="text-gray-400 max-w-md mx-auto">
+              {content?.no_data || 'No game logs available for the selected time period. Start playing to see your activity here!'}
+            </p>
+          </div>
+        ) : (
+          <table className="min-w-full w-full text-base text-left">
+            <thead>
+              <tr className="bg-[#181A29] text-yellow-300 text-lg">
+                <th className="px-4 py-3 font-bold whitespace-nowrap"><FaGamepad className="inline mr-1 text-yellow-400" />{content?.log?.game_name || 'Game'}</th>
+                <th className="px-4 py-3 font-bold whitespace-nowrap"><FaClock className="inline mr-1 text-blue-400" />{content?.log?.date || 'Date'}</th>
+                <th className="px-4 py-3 font-bold whitespace-nowrap"><FaChartLine className="inline mr-1 text-green-400" />{content?.log?.count || 'Spins'}</th>
+                <th className="px-4 py-3 font-bold whitespace-nowrap"><FaCoins className="inline mr-1 text-yellow-400" />{content?.log?.bet_amount || 'Bet'}</th>
+                <th className="px-4 py-3 font-bold whitespace-nowrap">{content?.log?.win_lose || 'Win/Loss'}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {logs.map((log, index) => (
+                <tr key={index} className={`transition ${index % 2 === 0 ? 'bg-[#23243a]' : 'bg-[#181A29]'} hover:bg-[#2c2d4a]`}>
+                  <td className="px-4 py-3 whitespace-nowrap text-white font-medium">{log.game_name}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-white font-medium">{log.from} - {log.to}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-white font-medium">{log.spin_count}</td>
+                  <td className="px-4 py-3 whitespace-nowrap text-white font-medium">{parseFloat(log.turnover).toLocaleString()}</td>
+                  <td className="px-4 py-3 whitespace-nowrap font-bold">
+                    <span className={parseFloat(log.win_loss) >= 0 ? 'text-green-400 flex items-center gap-1' : 'text-red-400 flex items-center gap-1'}>
+                      {parseFloat(log.win_loss) >= 0 ? <FaArrowUp /> : <FaArrowDown />}
+                      {parseFloat(log.win_loss) >= 0 ? '+' : ''}{parseFloat(log.win_loss).toLocaleString()}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        )}
+      </div>
+    </div>
   )
 }
