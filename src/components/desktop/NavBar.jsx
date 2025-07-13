@@ -137,21 +137,21 @@ function NavBar() {
           {/* Balances & Exchange - Always Centered */}
           {user && (
             <div className="flex items-center gap-2 bg-[#23243a] rounded-xl px-3 md:px-4 py-1 md:py-2 shadow-inner flex-1 justify-center mx-2 min-w-0 overflow-x-auto">
-              <div className="flex items-center gap-1">
-                <FaMoneyBillWave className="text-yellow-400 mr-1" />
-                <span className="text-xs text-gray-400 font-semibold">M:</span>
-                <span className="text-lg md:text-xl text-white font-extrabold">{user?.main_balance}</span>
-              </div>
-              <button 
-                className="mx-2 p-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-white shadow hover:scale-110 transition"
-                onClick={handleOpenExchangeModal}
-                aria-label="Exchange between balances"
-              >
-                <FaExchangeAlt />
-              </button>
+              {/*<div className="flex items-center gap-1">*/}
+              {/*  <FaMoneyBillWave className="text-yellow-400 mr-1" />*/}
+              {/*  <span className="text-xs text-gray-400 font-semibold">M:</span>*/}
+              {/*  <span className="text-lg md:text-xl text-white font-extrabold">{user?.main_balance}</span>*/}
+              {/*</div>*/}
+              {/*<button */}
+              {/*  className="mx-2 p-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-white shadow hover:scale-110 transition"*/}
+              {/*  onClick={handleOpenExchangeModal}*/}
+              {/*  aria-label="Exchange between balances"*/}
+              {/*>*/}
+              {/*  <FaExchangeAlt />*/}
+              {/*</button>*/}
               <div className="flex items-center gap-1">
                 <FaGamepad className="text-yellow-400 mr-1" />
-                <span className="text-xs text-gray-400 font-semibold">G:</span>
+                {/*<span className="text-xs text-gray-400 font-semibold">G:</span>*/}
                 <span className="text-lg md:text-xl text-white font-extrabold">{user?.balance}</span>
               </div>
             </div>

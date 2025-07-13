@@ -62,17 +62,17 @@ const Profile = () => {
   return (
     <div>
       {/* Balances */}
-      <div className="flex flex-col sm:flex-row gap-2 mb-4 items-center">
-        <div className="flex-1 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black rounded-xl px-4 py-2 text-center font-bold shadow">
-          {content?.profile?.main_balance || 'Main Balance'}: <span className="text-lg">{user?.main_balance !== undefined && user?.main_balance !== null ? Number(user.main_balance).toLocaleString() : 0}</span>
-        </div>
-        <button
-          className="mx-2 my-2 p-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-white shadow hover:scale-110 transition"
-          onClick={() => setShowExchangeModal(true)}
-          aria-label="Exchange between balances"
-        >
-          <FaExchangeAlt />
-        </button>
+      <div className="flex flex-col sm:flex-row gap-2 mb-4 justify-center">
+        {/*<div className="flex-1 bg-gradient-to-r from-yellow-400 to-yellow-600 text-black rounded-xl px-4 py-2 text-center font-bold shadow">*/}
+        {/*  {content?.profile?.main_balance || 'Main Balance'}: <span className="text-lg">{user?.main_balance !== undefined && user?.main_balance !== null ? Number(user.main_balance).toLocaleString() : 0}</span>*/}
+        {/*</div>*/}
+        {/*<button*/}
+        {/*  className="mx-2 my-2 p-2 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400 text-white shadow hover:scale-110 transition"*/}
+        {/*  onClick={() => setShowExchangeModal(true)}*/}
+        {/*  aria-label="Exchange between balances"*/}
+        {/*>*/}
+        {/*  <FaExchangeAlt />*/}
+        {/*</button>*/}
         <div className="flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-xl px-4 py-2 text-center font-bold shadow">
           {content?.profile?.game_balance || 'Game Balance'}: <span className="text-lg">{user?.balance !== undefined && user?.balance !== null ? Number(user.balance).toLocaleString() : 0}</span>
         </div>

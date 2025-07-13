@@ -22,41 +22,47 @@ export default function DepositLog() {
           <table className="min-w-full text-sm text-left">
             <thead>
               <tr className="bg-[#181A29] text-gray-300">
-                <th className="px-3 py-2 font-semibold whitespace-nowrap">{content?.log?.date || 'Date'}</th>
-                <th className="px-3 py-2 font-semibold whitespace-nowrap">{content?.wallet?.account_name || 'Account Name'}</th>
-                <th className="px-3 py-2 font-semibold whitespace-nowrap">{content?.wallet?.account || 'Account No.'}</th>
-                <th className="px-3 py-2 font-semibold whitespace-nowrap">{content?.log?.amount || 'Amount'}</th>
-                <th className="px-3 py-2 font-semibold whitespace-nowrap">{content?.log?.status || 'Status'}</th>
+                <th className="px-3 py-2 font-semibold whitespace-nowrap text-center ">{content?.log?.date || 'Date'}</th>
+                <th className="px-3 py-2 font-semibold whitespace-nowrap text-center">{content?.wallet?.account_name || 'Account Name'}</th>
+                <th className="px-3 py-2 font-semibold whitespace-nowrap text-center">{content?.wallet?.account || 'Account No.'}</th>
+                <th className="px-3 py-2 font-semibold whitespace-nowrap text-center">{content?.log?.amount || 'Amount'}</th>
+                <th className="px-3 py-2 font-semibold whitespace-nowrap text-center">{content?.log?.status || 'Status'}</th>
               </tr>
             </thead>
             <tbody>
-              {logs.map((log, index) => (
+            {logs.map((log, index) => (
                 <tr key={index} className="border-t border-gray-800 hover:bg-[#23243a] transition">
-                  <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
-                    <FaRegCalendarAlt className="text-blue-400" />
-                    <span>{log.datetime}</span>
-                  </td>
-                  <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
-                    <FaUser className="text-green-400" />
-                    <span>{log.account_name}</span>
-                  </td>
-                  <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
-                    <FaCreditCard className="text-pink-400" />
-                    <span>{log.account_number}</span>
-                  </td>
-                  <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
-                    <FaMoneyBillWave className="text-yellow-400" />
-                    <span>{Number(log.amount).toLocaleString()} Ks</span>
-                  </td>
-                  <td className="px-3 py-2 whitespace-nowrap">
-                    <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow
-                      ${log.status === 'Pending' ? 'bg-yellow-300 text-yellow-900' : log.status === 'Success' ? 'bg-green-300 text-green-900' : 'bg-red-300 text-red-900'}`}
-                    >
-                      {log.status}
-                    </span>
+                  <td className="px-3 py-2 whitespace-nowrap text-white text-center">{log.datetime}</td>
+                  <td className="px-3 py-2 whitespace-nowrap text-white text-center">{log.account_name}</td>
+                  <td className="px-3 py-2 whitespace-nowrap text-white text-center">{log.account_number}</td>
+                  <td className="px-3 py-2 whitespace-nowrap text-white text-center">{Number(log.amount).toLocaleString()} Ks</td>
+                  <td className="px-3 py-2 whitespace-nowrap text-center ">
+        <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow 
+          ${log.status === 'Pending' ? 'bg-yellow-300 text-yellow-900' :
+            log.status === 'Success' ? 'bg-green-300 text-green-900' :
+                'bg-red-300 text-red-900'}`}
+        >
+           {log.status === 'Pending' && (
+               <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                 <circle cx="12" cy="12" r="10" />
+                 <path d="M12 6v6l4 2" />
+               </svg>
+           )}
+          {log.status === 'Success' && (
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M5 13l4 4L19 7" />
+              </svg>
+          )}
+          {log.status === 'Failed' && (
+              <svg className="w-3 h-3" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                <path d="M6 18L18 6M6 6l12 12" />
+              </svg>
+          )}
+          {log.status}
+        </span>
                   </td>
                 </tr>
-              ))}
+            ))}
             </tbody>
           </table>
         </div>
@@ -64,3 +70,33 @@ export default function DepositLog() {
     </div>
   )
 }
+
+// <tr  className="border-t flex border-gray-800 hover:bg-[#23243a] transition">
+//   {logs.map((log, index) => (
+//       <>
+//         <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
+//           {/*<FaRegCalendarAlt className="text-blue-400" />*/}
+//           <span className="text-white">{log.datetime}</span>
+//         </td>
+//         <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
+//           {/*<FaUser className="text-green-400" />*/}
+//           <span>{log.account_name}</span>
+//         </td>
+//         <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
+//           {/*<FaCreditCard className="text-pink-400" />*/}
+//           <span>{log.account_number}</span>
+//         </td>
+//         <td className="px-3 py-2 whitespace-nowrap flex items-center gap-2">
+//           {/*<FaMoneyBillWave className="text-yellow-400" />*/}
+//           <span>{Number(log.amount).toLocaleString()} Ks</span>
+//         </td>
+//         <td className="px-3 py-2 whitespace-nowrap">
+//                     <span className={`px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow
+//                       ${log.status === 'Pending' ? 'bg-yellow-300 text-yellow-900' : log.status === 'Success' ? 'bg-green-300 text-green-900' : 'bg-red-300 text-red-900'}`}
+//                     >
+//                       {log.status}
+//                     </span>
+//         </td>
+//       </>
+//   ))}
+// </tr>

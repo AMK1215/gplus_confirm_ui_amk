@@ -43,6 +43,7 @@ const AdsVideo = () => {
                   <source src={API_URL + item.video_url} type="video/mp4" />
                   Your browser does not support the video tag.
                 </video>
+                {/*<div className="text-white">ww</div>*/}
                 <div className='card-body text-center'>
                   <h5 className='card-title text-warning'>{`Promotion Video ${index + 1}`}</h5>
                   <p className='card-text text-white-50'>Stay updated with our latest events and offers.</p>

@@ -15,13 +15,15 @@ const MoneyTransfer = () => {
      ]
   return (
     <div>
-      <div className="d-flex align-items-center justify-content-center gap-1 gap-sm-2">
-        {tabs.map((tab, index)=>{
-            return <div key={index} onClick={()=>setSelectedTab(tab.id)} className={`btn py-1 px-3 py-sm-2 px-sm-5 ${tab.id===selectedTab ? 'bg-warning text-white' : 'bg-light text-white' }  `}>
-                <p className="fw-semibold moneyTransferTabTitle">{tab.name}</p>
-            </div>
-        })}
-      </div>
+        <div className="flex flex-col sm:flex-row gap-1 mb-4 justify-center">
+            {tabs.map((tab, index)=>{
+                return <div key={index} onClick={()=>setSelectedTab(tab.id)} className={`btn py-1 px-3 py-sm-2 mx-a px-sm-5 ${tab.id===selectedTab ? 'bg-warning text-white' : 'bg-light text-white' }  `}>
+                    <div className="flex-1 bg-gradient-to-r from-blue-400 to-blue-600 text-white rounded-xl px-4 py-2 text-center font-bold shadow">
+                    <p className="fw-semibold moneyTransferTabTitle">{tab.name}</p>
+                    </div>
+                </div>
+            })}
+        </div>
       <div className="px-sm-5 mx-sm-5 mx-auto my-4 mb-5 pb-5">
         {selectedTab===1 && <Deposit/> }
         {selectedTab===2 && <WithDraw/> }
