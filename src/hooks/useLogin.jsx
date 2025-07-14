@@ -24,7 +24,7 @@ const useLogin = () => {
                 updateProfile(user);
 
                 navigate('/?type=all');
-                window.location.reload();
+                // window.location.reload();
                 message.success('Logged In Successfully.');
                 return user;
             }

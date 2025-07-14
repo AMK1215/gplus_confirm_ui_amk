@@ -169,8 +169,9 @@ const Register = ({ show, onClose }) => {
       alignItems: 'center',
       zIndex: 9999
     }}>
-      <div style={{
-        backgroundColor: '#212121',
+      <div className="border border-gray-700 relative" style={{
+
+        backgroundColor: '#11121C',
         borderRadius: '20px',
         padding: '30px',
         width: '100%',

@@ -212,31 +212,31 @@ const InformationPage = () => {
         </div>
 
         {/* Quick Actions */}
-        <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-gradient-to-br from-[#181A29] to-[#1f2338] rounded-2xl p-6 text-center border border-gray-700/50 hover:border-yellow-400/30 transition-all duration-300">
-            <div className="w-12 h-12 bg-blue-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaUser className="text-blue-400 text-xl" />
-            </div>
-            <h3 className="text-white font-semibold mb-2">Profile Security</h3>
-            <p className="text-gray-400 text-sm">Keep your account information secure and up to date</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-[#181A29] to-[#1f2338] rounded-2xl p-6 text-center border border-gray-700/50 hover:border-yellow-400/30 transition-all duration-300">
-            <div className="w-12 h-12 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaWallet className="text-green-400 text-xl" />
-            </div>
-            <h3 className="text-white font-semibold mb-2">Secure Transfers</h3>
-            <p className="text-gray-400 text-sm">Transfer funds safely between your accounts</p>
-          </div>
-          
-          <div className="bg-gradient-to-br from-[#181A29] to-[#1f2338] rounded-2xl p-6 text-center border border-gray-700/50 hover:border-yellow-400/30 transition-all duration-300">
-            <div className="w-12 h-12 bg-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">
-              <FaChartLine className="text-purple-400 text-xl" />
-            </div>
-            <h3 className="text-white font-semibold mb-2">Transaction History</h3>
-            <p className="text-gray-400 text-sm">Track all your financial activities and transactions</p>
-          </div>
-        </div>
+        {/*<div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">*/}
+        {/*  <div className="bg-gradient-to-br from-[#181A29] to-[#1f2338] rounded-2xl p-6 text-center border border-gray-700/50 hover:border-yellow-400/30 transition-all duration-300">*/}
+        {/*    <div className="w-12 h-12 bg-blue-400/20 rounded-full flex items-center justify-center mx-auto mb-4">*/}
+        {/*      <FaUser className="text-blue-400 text-xl" />*/}
+        {/*    </div>*/}
+        {/*    <h3 className="text-white font-semibold mb-2">Profile Security</h3>*/}
+        {/*    <p className="text-gray-400 text-sm">Keep your account information secure and up to date</p>*/}
+        {/*  </div>*/}
+        {/*  */}
+        {/*  <div className="bg-gradient-to-br from-[#181A29] to-[#1f2338] rounded-2xl p-6 text-center border border-gray-700/50 hover:border-yellow-400/30 transition-all duration-300">*/}
+        {/*    <div className="w-12 h-12 bg-green-400/20 rounded-full flex items-center justify-center mx-auto mb-4">*/}
+        {/*      <FaWallet className="text-green-400 text-xl" />*/}
+        {/*    </div>*/}
+        {/*    <h3 className="text-white font-semibold mb-2">Secure Transfers</h3>*/}
+        {/*    <p className="text-gray-400 text-sm">Transfer funds safely between your accounts</p>*/}
+        {/*  </div>*/}
+        {/*  */}
+        {/*  <div className="bg-gradient-to-br from-[#181A29] to-[#1f2338] rounded-2xl p-6 text-center border border-gray-700/50 hover:border-yellow-400/30 transition-all duration-300">*/}
+        {/*    <div className="w-12 h-12 bg-purple-400/20 rounded-full flex items-center justify-center mx-auto mb-4">*/}
+        {/*      <FaChartLine className="text-purple-400 text-xl" />*/}
+        {/*    </div>*/}
+        {/*    <h3 className="text-white font-semibold mb-2">Transaction History</h3>*/}
+        {/*    <p className="text-gray-400 text-sm">Track all your financial activities and transactions</p>*/}
+        {/*  </div>*/}
+        {/*</div>*/}
       </div>
     </div>
   );
