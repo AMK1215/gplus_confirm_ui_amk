@@ -191,13 +191,13 @@ export function GameList({loading, games}) {
       gap: 0.5rem;
       //padding-bottom: 0rem;
       scroll-snap-type: x mandatory;
-
-      scrollbar-width: none; /* Firefox */
-      -ms-overflow-style: none; /* IE 10+ */
+      padding-bottom: 2px;
+      scrollbar-width: thin;
+      scrollbar-color: #FFD700 #23272f;
     }
-    .scroll-container::-webkit-scrollbar {
-      display: none; /* Chrome, Safari */
-    }
+    //.scroll-container::-webkit-scrollbar {
+    //  display: none; /* Chrome, Safari */
+    //}
 
     .custom-margin {
       margin-top: 5px;
