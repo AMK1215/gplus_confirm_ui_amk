@@ -7,7 +7,7 @@ const VideoCard = forwardRef(({ video }, ref) => {
       <video
         ref={ref}
         className="videocard__video"
-        src={'https://ponewine20x.xyz/api/..'+video}
+        src={'https://tttgamingmm.site/api/..'+video}
         loop
          style={{ width: "100%", height: "100%" }}
       />

@@ -34,7 +34,7 @@ const GameTabsLg = () => {
   } = useContext(GameContext);
   // const gameProvider = providers && providers.find((p) => p?.code == provider)?.id;
 
-  // const providerUrl = https://ponewine20x.xyz/api/providers/
+  // const providerUrl = https://tttgamingmm.site/api/providers/
 
   const baseImageMap = {
     1: "/images/Final_All/Slot/SlotPng.png",

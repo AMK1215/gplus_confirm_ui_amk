@@ -34,7 +34,7 @@ const AuthContextProvider = ({ children }) => {
     useEffect(() => {
         if (token) {
             const interval = setInterval(() => {
-                fetch('https://ponewine20x.xyz/api/user', {
+                fetch('https://tttgamingmm.site/api/user', {
                     headers: {
                         'Authorization': `Bearer ${token}`,
                         'Accept': 'application/json',

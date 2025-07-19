@@ -8,7 +8,7 @@ const AdsBanner = () => {
   const MySwal = withReactContent(Swal);
   const adsFire = () => {
     MySwal.fire({
-      imageUrl: "https://ponewine20x.xyz/api/.."+ads_banner[0].img_url,
+      imageUrl: "https://tttgamingmm.site/api/.."+ads_banner[0].img_url,
       imageHeight: 150,
       width: '100%',
       text: ads_banner[0]?.text || '',

@@ -117,12 +117,12 @@ const SidebarLg = ({ show, onClose }) => {
           <div className="flex justify-center gap-4 mt-6 mb-8">
             {contacts && contacts.map((contact, index) => (
               <Link to={contact.link} key={index} onClick={onClose}>
-                <img src={"https://ponewine20x.xyz/api/../"+contact.image} className="rounded-lg w-12 h-12" alt={contact.name} />
+                <img src={"https://tttgamingmm.site/api/../"+contact.image} className="rounded-lg w-12 h-12" alt={contact.name} />
               </Link>
             ))}
           </div>
           <div className="flex justify-center my-4">
-            <a href='https://ponewine20x.xyz/assets/app/bossi.apk' target='_blank' rel="noreferrer" className="inline-block text-center border border-white px-4 py-2 rounded-full text-white no-underline font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200">
+            <a href='https://tttgamingmm.site/assets/app/bossi.apk' target='_blank' rel="noreferrer" className="inline-block text-center border border-white px-4 py-2 rounded-full text-white no-underline font-semibold hover:bg-white hover:text-gray-900 transition-colors duration-200">
               Download App
             </a>
           </div>

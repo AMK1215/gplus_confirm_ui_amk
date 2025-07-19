@@ -66,7 +66,7 @@ const Deposit = () => {
                 <div>
                   <img
                     className="rounded-lg shadow w-12 h-12 object-cover"
-                    src={"https://ponewine20x.xyz" + selectedBank.image}
+                    src={"https://tttgamingmm.site" + selectedBank.image}
                     alt={selectedBank.payment_type}
                   />
                 </div>
@@ -131,7 +131,7 @@ const Deposit = () => {
                   setShow(false);
                   setSelectedBank(bank);
                 }} className="flex gap-2 bg-gray-100 hover:bg-yellow-100 cursor-pointer p-2 rounded-lg text-black items-center">
-                  <img src={"https://ponewine20x.xyz" + bank.image} className="w-10 h-10 rounded-md object-cover" alt="bank" />
+                  <img src={"https://tttgamingmm.site" + bank.image} className="w-10 h-10 rounded-md object-cover" alt="bank" />
                   <div>
                     <p className="text-xs">{content?.wallet?.account} : {bank.account_number}</p>
                     <p className="text-xs">{content?.wallet?.account_name} : {bank.account_name}</p>
